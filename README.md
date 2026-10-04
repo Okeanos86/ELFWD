@@ -38,14 +38,14 @@ tied to a specific filesystem or driver stack.
 ```
 mass:/FILENAME.ELF
 @Argument
-# comment: load an ELF with an argv1
+# comment: load an ELF with an argv[1].
 ```
 
 **POPSTARTER:**
 ```
 mass:/POPS/POPSTARTER.ELF
 mass:/POPS/XX.GAMENAME.ELF
-# comment: enable HDTVFIX and raise USB delay
+# comment: mask POPSTARTER.ELF as XX.GAMENAME.ELF in argv[0], apply patches for HDTVFIX and USB delay.
 $412 0x01
 $413 0x05
 ```
