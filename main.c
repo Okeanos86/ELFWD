@@ -67,7 +67,7 @@ typedef struct {
 
 static char config_path[512];
 static char launcher_dir[512];       // directory of the launcher, trailing '/'
-static char irx_full[CFG_MAX_IRX][1024]; // irx= paths after bare-name resolution
+static char irx_full[CFG_MAX_IRX][1024]; // irx= paths after resolution against the launcher folder
 static char cfg_buf[CFG_MAX_FILE + 2];
 static Cfg  cfg;
 static uint32_t patch_addr[CFG_MAX_PATCHES];
@@ -279,7 +279,7 @@ static int load_irx_modules(void) {
             id = SifLoadStartModule(cfg.irx[i].path, arglen, arglen ? args : NULL, &result);
         }
         // Only id < 0 (could not load) is an error. The module's own start
-        // result is not checked: the previous build ignored it and worked.
+        // result is not checked.
         if (id < 0) { dbg_irx_index = i + 1; return -1; }
     }
     return 0;
